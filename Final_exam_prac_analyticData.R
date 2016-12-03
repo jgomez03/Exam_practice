@@ -78,3 +78,17 @@ analytic_data
 
 ##save data
 write_csv(analytic_data,path="exam_prac_analytic_data_gomez.csv")
+
+## tables and figures
+#create a correlation table
+
+library(apaTables)
+analytic_data
+apa.cor.table(analytic_data, filename="Table1.doc", table.number=1)
+
+
+#create scatterplot 
+pos_affect.dep <- qplot(pos_affect, dep,data=analytic_data)
+print(pos_affect.dep)
+cor.test(x=analytic_data$pos_affect,y=analytic_data$dep)
+ggsave("Figure1.pdf")
